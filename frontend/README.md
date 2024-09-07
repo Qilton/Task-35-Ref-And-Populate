@@ -1,8 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Vercel Backend: https://task-35-ref-and-populate.vercel.app
+Vercel Frontend: https://task-35-ref-and-populate-chi.vercel.app
+Backend Repo: https://github.com/Qilton/Task-35-Ref-And-Populate/tree/main/backend
