@@ -12,21 +12,21 @@ function App() {
 
   const handleUserSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/users', { name, email });
+    await axios.post('https://task-35-ref-and-populate.vercel.app/users', { name, email });
     setName('');
     setEmail('');
   };
 
   const handlePostSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/posts', { title, content, userId });
+    await axios.post('https://task-35-ref-and-populate.vercel.app/posts', { title, content, userId });
     setTitle('');
     setContent('');
     setUserId('');
   };
 
   const fetchPosts = async () => {
-    const response = await axios.get('http://localhost:5000/posts');
+    const response = await axios.get('https://task-35-ref-and-populate.vercel.app/posts');
     setPosts(response.data);
   };
 
