@@ -47,6 +47,9 @@ app.get('/posts', async (req, res) => {
   const posts = await Post.find().populate('user');
   res.json(posts);
 });
+app.get('/', async (req, res) => {
+ res.send("Hello World")
+});
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
