@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/mydatabase', {
+mongoose.connect('mongodb+srv://Swayam:9832900366@cluster0.z7kyt.mongodb.net/mydatabase', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
