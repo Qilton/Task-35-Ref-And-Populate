@@ -15,7 +15,8 @@ function App() {
     await axios.post('https://task-35-ref-and-populate.vercel.app/users', { name, email });
     setName('');
     setEmail('');
-    alert("user Saved")
+    console.log(Response.data)
+    alert("Registered Successfully")
   };
 
   const handlePostSubmit = async (e) => {
@@ -24,7 +25,8 @@ function App() {
     setTitle('');
     setContent('');
     setUserId('');
-    alert("Post Saved")
+    // console.log(response.data)
+    alert("Post Added Succesfully")
   };
 
   const fetchPosts = async () => {
