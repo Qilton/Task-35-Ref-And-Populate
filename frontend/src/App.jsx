@@ -1,5 +1,5 @@
 // src/App.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function App() {
@@ -34,7 +34,9 @@ function App() {
     console.log(response.data)
     setPosts(response.data);
   };
-
+useEffect(() => {
+fetchPosts()
+}, [])
   return (
     <div>
       <h1>User and Post Management</h1>
@@ -78,7 +80,6 @@ function App() {
         <button type="submit">Add Post</button>
       </form>
 
-      <button onClick={fetchPosts}>Fetch Posts</button>
 
       <div>
         <h2>Posts:</h2>
