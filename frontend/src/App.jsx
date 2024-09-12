@@ -31,6 +31,7 @@ function App() {
 
   const fetchPosts = async () => {
     const response = await axios.get('https://task-35-ref-and-populate.vercel.app/posts');
+    console.log(response.data)
     setPosts(response.data);
   };
 
@@ -83,7 +84,7 @@ function App() {
         <h2>Posts:</h2>
         <ul>
           {posts.map((post) => (
-            <li key={post._id}>
+             <li key={post._id}>
               <h3>{post.title}</h3>
               <p>{post.content}</p>
               <p>User:{post.user.name} ({post.user.email})</p>
