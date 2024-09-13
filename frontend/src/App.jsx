@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './App.css';
 function App() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -105,6 +105,7 @@ function App() {
           ))}
         </ul>
       </div>
+      <h1>SORRY FROM GANJI CHUDAIL <img src="./public/Img.png" alt="" /></h1>
     </div>
   );
 }
