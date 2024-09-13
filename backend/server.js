@@ -38,12 +38,23 @@ app.post('/users', async (req, res) => {
 
 app.post('/posts', async (req, res) => {
   const { title, content, email } = req.body;
+
+  // Find user by email
   const user = await User.findOne({ email });
-  let userId=user.ObjectId()
-  const newPost = new Post({ title, content, user: userId });
+
+  if (!user) {
+    return res.status(404).send({ message: 'User not found' });
+  }
+
+  // Use the user's _id directly
+  const newPost = new Post({ title, content, user: user._id });
+
+  // Save the post to the database
   await newPost.save();
+
   res.status(201).send(newPost);
 });
+
 
 app.get('/posts', async (req, res) => {
   const posts = await Post.find().populate('user');
