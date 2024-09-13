@@ -37,7 +37,9 @@ app.post('/users', async (req, res) => {
 });
 
 app.post('/posts', async (req, res) => {
-  const { title, content, userId } = req.body;
+  const { title, content, email } = req.body;
+  const user = await User.findOne({ email });
+  let userId=user.ObjectId()
   const newPost = new Post({ title, content, user: userId });
   await newPost.save();
   res.status(201).send(newPost);
