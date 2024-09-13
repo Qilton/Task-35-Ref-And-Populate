@@ -5,19 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const websites = [
-  "localhost:8080",
-  "https://task-35-ref-and-populate-chi.vercel.app/",
-  "https://task-35-ref-and-populate.vercel.app/",
-  ];
-app.use(
-  cors({
-  origin: websites,
-  methods: "GET,POST,PUT,DELETE,OPTIONS",
-  credentials: true,
-  allowedHeaders: "Content-Type,Authorization",
-  })
-  );
+app.use(cors())
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb+srv://Swayam:9832900366@cluster0.z7kyt.mongodb.net/mydatabase', {
@@ -40,14 +28,6 @@ const User = mongoose.model('User', userSchema);
 const Post = mongoose.model('Post', postSchema);
 
 
-app.post('/users', async (req, res) => {
-  const { name, email } = req.body;
-  const newUser = new User({ name, email });
-  await newUser.save();
-  console.log(newUser)
-  res.status(201).send(newUser);
-});
-
 app.post('/posts', async (req, res) => {
   const { title, content, email } = req.body;
 
@@ -62,6 +42,21 @@ app.post('/posts', async (req, res) => {
   const newPost = new Post({ title, content, user: user._id });
 
   // Save the post to the database
+  await newPost.save();
+
+  res.status(201).send(newPost);
+});
+
+app.post('/posts', async (req, res) => {
+  const { title, content, email } = req.body;
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(404).send({ message: 'User not found' });
+  }
+
+  const newPost = new Post({ title, content, user: user._id });
+
   await newPost.save();
 
   res.status(201).send(newPost);
