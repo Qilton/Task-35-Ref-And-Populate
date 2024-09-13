@@ -5,7 +5,19 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());
+const websites = [
+  "localhost:8080",
+  "https://task-35-ref-and-populate-chi.vercel.app/",
+  "https://task-35-ref-and-populate.vercel.app/",
+  ];
+app.use(
+  cors({
+  origin: websites,
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  credentials: true,
+  allowedHeaders: "Content-Type,Authorization",
+  })
+  );
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb+srv://Swayam:9832900366@cluster0.z7kyt.mongodb.net/mydatabase', {
